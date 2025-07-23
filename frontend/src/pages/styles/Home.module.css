@@ -1,0 +1,13 @@
+.main {
+  flex: 1;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 420px); /* ajustado para header + footer */
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 500;
+}

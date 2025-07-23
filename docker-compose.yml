@@ -1,0 +1,89 @@
+# services:
+#   app:
+#     build: .
+#     ports:
+#       - "8080:8080"
+#     depends_on:
+#       postgres:
+#         condition: service_healthy
+#     environment:
+#       - DB_HOST=postgres
+#       - DB_PORT=5432
+#       - DB_USER=postgres
+#       - DB_PASSWORD=12345
+#       - DB_NAME=gestao_vendas
+#     volumes:
+#       - .:/app
+#     restart: on-failure
+
+#   postgres:
+#     image: postgres:15
+#     restart: always
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=12345
+#       - POSTGRES_DB=gestao_vendas
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     healthcheck:
+#       test: ["CMD-SHELL", "pg_isready -U postgres"]
+#       interval: 5s
+#       timeout: 5s
+#       retries: 5
+
+# volumes:
+#   postgres_data:
+
+services:
+  app:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=12345
+      - DB_NAME=gestao_vendas
+    volumes:
+      - ./backend:/app
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    restart: on-failure
+    depends_on:
+      - app
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=gestao_vendas
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

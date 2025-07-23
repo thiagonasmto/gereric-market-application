@@ -1,0 +1,39 @@
+.footer {
+  background-color: #2D66D0;
+  color: white;
+  text-align: center;
+  padding: 3rem;
+  margin-top: auto;
+}
+
+.vogalForm {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.vogalInput {
+  padding: 4px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  max-width: 160px;
+}
+
+.vogalButton {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.vogalResult {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #fff;
+}

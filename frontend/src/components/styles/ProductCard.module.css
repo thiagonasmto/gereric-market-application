@@ -1,0 +1,37 @@
+.card {
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff;
+  font-family: sans-serif;
+  margin: 16px;
+}
+
+.imagePlaceholder {
+  height: 140px;
+  background-color: #d3d3d3;
+}
+
+.content {
+  padding: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.description {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #555555;
+}
+
+.price {
+  margin: 0;
+  font-weight: bold;
+  font-size: 16px;
+  color: #2d66d0;
+}

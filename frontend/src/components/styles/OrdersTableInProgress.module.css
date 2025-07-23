@@ -1,0 +1,14 @@
+.card {
+  margin: 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.tagYellow {
+  font-weight: light;
+  background-color: white !important;
+  color: black !important;
+  border-color: #FFD700;
+}
