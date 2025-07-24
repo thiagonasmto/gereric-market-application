@@ -1,3 +1,4 @@
+````markdown
 # 🛒 Gestão de Vendas
 
 Aplicação web com backend em Go e frontend em ReactJS + TypeScript, utilizando PostgreSQL como banco de dados.
@@ -11,7 +12,7 @@ Aplicação web com backend em Go e frontend em ReactJS + TypeScript, utilizando
 ```bash
 git clone https://github.com/seu_usuario/gereric-market-application.git
 cd gereric-market-application
-```
+````
 
 ---
 
@@ -67,3 +68,9 @@ npm run dev       # Inicia o frontend (geralmente em http://localhost:5173)
 
 * Frontend: [http://localhost:5173](http://localhost:5173)
 * API Backend: [http://localhost:8081](http://localhost:8081)
+
+---
+
+### 📚 Documentação da API
+
+A documentação completa das rotas e estrutura da API pode ser encontrada no [README do backend](./backend/README.md).
