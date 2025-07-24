@@ -1,4 +1,3 @@
-````markdown
 # 🛒 Gestão de Vendas
 
 Aplicação web com backend em Go e frontend em ReactJS + TypeScript, utilizando PostgreSQL como banco de dados.
