@@ -128,7 +128,7 @@ Base URL: `http://localhost:8081`
 
 * A senha é armazenada criptografada usando `bcrypt`.
 * Todas as datas seguem o padrão ISO 8601.
-* O campo `countOrders` representa a quantidade de pedidos associados ao cliente (implementação futura).
+* O campo `countOrders` representa a quantidade de pedidos associados ao cliente.
 
 ---
 
@@ -160,9 +160,3 @@ backend/
 Este projeto é de caráter **experimental e educacional**, sendo aprimorado continuamente.
 
 ---
-
-```
-
-Se você quiser incluir outras rotas além de `/clients`, posso expandir o README conforme sua API evoluir.
-```
-
