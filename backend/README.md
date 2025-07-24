@@ -1,3 +1,6 @@
+Claro! Aqui está o README completo, incluindo a documentação das rotas adicionais que você pediu, no mesmo padrão e estilo do README original:
+
+````markdown
 # 🧠 Backend - Gestão de Vendas
 
 Este backend foi desenvolvido em **Go** com o objetivo de aprendizado pessoal. Ele fornece uma API REST para gerenciamento de um mercado genérico, utilizando **PostgreSQL** como banco de dados.
@@ -8,58 +11,80 @@ Este backend foi desenvolvido em **Go** com o objetivo de aprendizado pessoal. E
 
 Base URL: `http://localhost:8081`
 
-### 📄 Listar todos os clientes
+---
 
-**GET** `/clients/`
+### 👥 Rotas de Clientes (`/clients`)
 
-**Resposta:**
-
-```json
-[
-  {
-    "id": "141a44d1-f04d-409f-936a-fa39abb2b978",
-    "name": "name",
-    "email": "email@gmail.com",
-    "password": "$2a$10$NIyo0rd6bZqFnHxLupNzb...",
-    "createdAt": "2025-07-21T21:11:32.008906-03:00",
-    "updatedAt": "2025-07-21T21:11:32.008906-03:00",
-    "countOrders": 0
-  }
-]
-````
+| Método | Rota         | Descrição                    | Autenticação | Role requerida |
+|--------|--------------|------------------------------|--------------|----------------|
+| POST   | `/clients/`  | Criar novo cliente           | Não          | Nenhuma        |
+| GET    | `/clients/`  | Listar todos os clientes     | Sim          | admin          |
+| GET    | `/clients/:id` | Buscar cliente por ID       | Sim          | admin          |
+| PUT    | `/clients/:id` | Atualizar cliente           | Sim          | admin          |
+| DELETE | `/clients/:id` | Deletar cliente             | Sim          | admin          |
 
 ---
 
-### 🔍 Buscar cliente por ID
+### 🔐 Rotas de Administradores (`/adms`)
 
-**GET** `/clients/:id`
+> **Acesso restrito:** Apenas usuários com role `admin` e autenticação obrigatória.
 
-**Resposta:**
-
-```json
-{
-  "id": "141a44d1-f04d-409f-936a-fa39abb2b978",
-  "name": "name",
-  "email": "email@gmail.com",
-  "password": "$2a$10$NIyo0rd6bZqFnHxLupNzb...",
-  "createdAt": "2025-07-21T21:11:32.008906-03:00",
-  "updatedAt": "2025-07-21T21:11:32.008906-03:00",
-  "countOrders": 0
-}
-```
+| Método | Rota        | Descrição                       |
+| ------ | ----------- | ------------------------------- |
+| POST   | `/adms/`    | Criar um novo administrador     |
+| GET    | `/adms/`    | Listar todos os administradores |
+| GET    | `/adms/:id` | Buscar administrador por ID     |
+| PUT    | `/adms/:id` | Atualizar administrador         |
+| DELETE | `/adms/:id` | Deletar administrador           |
 
 ---
 
-### ➕ Criar novo cliente
+### 📦 Rotas de Produtos (`/products`)
 
-**POST** `/clients/`
+| Método | Rota            | Descrição                | Autenticação | Role requerida |
+| ------ | --------------- | ------------------------ | ------------ | -------------- |
+| POST   | `/products/`    | Criar novo produto       | Sim          | admin          |
+| GET    | `/products/`    | Listar todos os produtos | Não          | Nenhuma        |
+| GET    | `/products/:id` | Buscar produto por ID    | Não          | Nenhuma        |
+| PUT    | `/products/:id` | Atualizar produto        | Sim          | admin          |
+| DELETE | `/products/:id` | Deletar produto          | Sim          | admin          |
 
-**Corpo da requisição:**
+---
+
+### 📦 Rotas de Pedidos (`/orders`)
+
+| Método | Rota          | Descrição               | Autenticação | Role requerida |
+| ------ | ------------- | ----------------------- | ------------ | -------------- |
+| POST   | `/orders/`    | Criar novo pedido       | Sim          | Qualquer       |
+| GET    | `/orders/`    | Listar todos os pedidos | Não          | Nenhuma        |
+| GET    | `/orders/:id` | Buscar pedido por ID    | Sim          | admin          |
+| PUT    | `/orders/:id` | Atualizar pedido        | Sim          | admin          |
+
+---
+
+### 🛠 Rotas de Serviços Auxiliares (`/services`)
+
+| Método | Rota                          | Descrição                              | Autenticação | Role requerida |
+| ------ | ----------------------------- | -------------------------------------- | ------------ | -------------- |
+| GET    | `/services/generate-excel`    | Gera relatório Excel dos dados         | Sim          | admin          |
+| POST   | `/services/find-vogal`        | Serviço para encontrar vogais em texto | Não          | Nenhuma        |
+| GET    | `/services/rank-clients`      | Ranking dos clientes mais ativos       | Sim          | admin          |
+| GET    | `/services/ordes-in-progress` | Lista pedidos em andamento             | Sim          | admin          |
+| GET    | `/services/summary`           | Resumo geral dos dados                 | Sim          | admin          |
+
+---
+
+### 🔑 Autenticação
+
+| Método | Rota     | Descrição                           |
+| ------ | -------- | ----------------------------------- |
+| POST   | `/login` | Autenticação e geração de token JWT |
+
+**Exemplo de corpo para login:**
 
 ```json
 {
-  "name": "name",
-  "email": "email@gmail.com",
+  "email": "usuario@exemplo.com",
   "password": "senha123"
 }
 ```
@@ -68,57 +93,7 @@ Base URL: `http://localhost:8081`
 
 ```json
 {
-  "id": "141a44d1-f04d-409f-936a-fa39abb2b978",
-  "name": "name",
-  "email": "email@gmail.com",
-  "password": "$2a$10$NIyo0rd6bZqFnHxLupNzb...",
-  "createdAt": "2025-07-21T21:11:32.008906-03:00",
-  "updatedAt": "2025-07-21T21:11:32.008906-03:00",
-  "countOrders": 0
-}
-```
-
----
-
-### ✏️ Atualizar cliente existente
-
-**PUT** `/clients/:id`
-
-**Corpo da requisição:**
-
-```json
-{
-  "name": "user3",
-  "email": "user4@gmail.com",
-  "password": "novaSenha"
-}
-```
-
-**Resposta:**
-
-```json
-{
-  "id": "52d8d8ed-f3f1-4a1e-9952-d8857beb15c1",
-  "name": "user3",
-  "email": "user4@gmail.com",
-  "password": "$2a$10$lsa0BCKawE2oPQAMfmok...",
-  "createdAt": "2025-07-18T23:18:22.438798-03:00",
-  "updatedAt": "2025-07-18T23:32:53.0246658-03:00",
-  "countOrders": 0
-}
-```
-
----
-
-### ❌ Deletar cliente
-
-**DELETE** `/clients/:id`
-
-**Resposta:**
-
-```json
-{
-  "message": "Usuário deletado com sucesso"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
 
@@ -129,6 +104,8 @@ Base URL: `http://localhost:8081`
 * A senha é armazenada criptografada usando `bcrypt`.
 * Todas as datas seguem o padrão ISO 8601.
 * O campo `countOrders` representa a quantidade de pedidos associados ao cliente.
+* As rotas protegidas exigem um token JWT válido no header `Authorization: Bearer <token>`.
+* A autorização é feita com base na role do usuário (`admin` para rotas restritas).
 
 ---
 
@@ -137,7 +114,7 @@ Base URL: `http://localhost:8081`
 * [Go](https://golang.org/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [GORM](https://gorm.io/)
-* [Echo Framework](https://echo.labstack.com/) (ou o framework que estiver usando)
+* [Gin Framework](https://gin-gonic.com/)
 
 ---
 
