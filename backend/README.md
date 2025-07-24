@@ -1,6 +1,3 @@
-Claro! Aqui está o README completo, incluindo a documentação das rotas adicionais que você pediu, no mesmo padrão e estilo do README original:
-
-````markdown
 # 🧠 Backend - Gestão de Vendas
 
 Este backend foi desenvolvido em **Go** com o objetivo de aprendizado pessoal. Ele fornece uma API REST para gerenciamento de um mercado genérico, utilizando **PostgreSQL** como banco de dados.
