@@ -53,7 +53,7 @@ Base URL: `http://localhost:8081`
 | Método | Rota          | Descrição               | Autenticação | Role requerida |
 | ------ | ------------- | ----------------------- | ------------ | -------------- |
 | POST   | `/orders/`    | Criar novo pedido       | Sim          | Qualquer       |
-| GET    | `/orders/`    | Listar todos os pedidos | Não          | Nenhuma        |
+| GET    | `/orders/`    | Listar todos os pedidos | Sim          | admin          |
 | GET    | `/orders/:id` | Buscar pedido por ID    | Sim          | admin          |
 | PUT    | `/orders/:id` | Atualizar pedido        | Sim          | admin          |
 
