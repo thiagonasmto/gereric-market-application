@@ -25,6 +25,7 @@ Base URL: `http://localhost:8081`
 ### 🔐 Rotas de Administradores (`/adms`)
 
 > **Acesso restrito:** Apenas usuários com role `admin` e autenticação obrigatória.
+> Será necessário instânciar um primeiro `admin` para aproveitamento de todos os recursos (Funcionalidade de inicialização será implementada).
 
 | Método | Rota        | Descrição                       |
 | ------ | ----------- | ------------------------------- |
