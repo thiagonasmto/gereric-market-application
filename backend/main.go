@@ -7,6 +7,7 @@ import (
 	"gestao-vendas/routes"
 	"gestao-vendas/services"
 	"log"
+	"os"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -15,7 +16,6 @@ import (
 )
 
 func main() {
-	// conectar ao banco
 	config.Connect()
 
 	fmt.Println("Migrando tabelas...")
@@ -82,7 +82,6 @@ func main() {
 
 					totalInvoiced += order.TotalPrice
 
-					// Atualiza pedido como processado
 					config.DB.Model(&order).Update("processed", 1)
 
 					var client models.Client
@@ -107,7 +106,6 @@ func main() {
 		}
 	}()
 
-	// iniciar servidor
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
@@ -119,9 +117,11 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	// rotas
 	routes.UserRoutes(r)
 
-	// iniciar na porta 8081
-	r.Run(":8081")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8081"
+	}
+	r.Run(":" + port)
 }
