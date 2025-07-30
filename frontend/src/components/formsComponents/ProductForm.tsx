@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/ProductForm.module.css';
+import { API_BASE_URL } from '../../services/api';
 
 const ProductForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const ProductForm: React.FC = () => {
     e.preventDefault();
     const token = localStorage.getItem("authToken");
     try {
-      const response = await fetch('http://localhost:8081/products/', {
+      const response = await fetch(`${API_BASE_URL}1/products/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Typography, Card } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import styles from '../styles/RanckClientsTable.module.css';
+import { API_BASE_URL } from '../../services/api';
 
 const { Title } = Typography;
 
@@ -16,7 +17,7 @@ export const RankClientsTable: React.FC = () => {
   const [clients, setClients] = useState<RankedClient[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:8081/services/rank-clients', {
+    fetch(`${API_BASE_URL}/services/rank-clients`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

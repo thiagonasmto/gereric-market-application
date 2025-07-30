@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles/Footer.module.css';
+import { API_BASE_URL } from '../services/api';
 
 const Footer: React.FC = () => {
   const [inputText, setInputText] = useState('');
@@ -9,7 +10,7 @@ const Footer: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8081/services/find-vogal', {
+      const response = await fetch(`${API_BASE_URL}/services/find-vogal`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

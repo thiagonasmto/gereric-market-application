@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Typography, Card } from 'antd';
 import styles from '../styles/SummaryTable.module.css';
+import { API_BASE_URL } from '../../services/api';
 
 const { Title } = Typography;
 
@@ -15,7 +16,7 @@ export const SummaryTable: React.FC = () => {
   const [summary, setSummary] = useState<Summary | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:8081/services/summary', {
+    fetch(`${API_BASE_URL}/services/summary`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

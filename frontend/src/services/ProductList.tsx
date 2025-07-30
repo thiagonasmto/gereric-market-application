@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Order from '../components/Order';
 import ProductCard from '../components/ProductCard';
+import { API_BASE_URL } from '../services/api';
 
 type Product = {
   id: string;
@@ -20,10 +21,9 @@ const ProductSelectionAndOrder: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<SelectedProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  // const clientId = '0abc7dcc-51d0-421b-a0d5-44d7147f1d3a'; // Pode ser dinâmico
 
   useEffect(() => {
-    fetch('http://localhost:8081/products/')
+    fetch(`${API_BASE_URL}/products/`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

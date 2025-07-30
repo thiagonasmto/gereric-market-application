@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles/Register.module.css';
+import { API_BASE_URL } from '../services/api';
 
 const Register: React.FC = () => {
   const [name, setName] = useState('');
@@ -20,7 +21,7 @@ const Register: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8081/clients/', {
+      const response = await fetch(`${API_BASE_URL}/clients/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),

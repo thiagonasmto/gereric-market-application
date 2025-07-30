@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Typography, Card, Tag, Popover, Button, Divider } from 'antd';
 import styles from '../styles/OrdersTableInProgress.module.css';
+import { API_BASE_URL } from '../../services/api';
 
 const { Title } = Typography;
 
@@ -26,7 +27,7 @@ export const OrdersTableInProgress: React.FC = () => {
   const [orders, setOrders] = useState<OrderInProgress[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:8081/services/ordes-in-progress', {
+    fetch(`${API_BASE_URL}/services/ordes-in-progress`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

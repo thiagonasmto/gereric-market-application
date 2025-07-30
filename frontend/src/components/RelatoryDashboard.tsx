@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { SummaryTable } from './tablesComponents/SummaryTable';
 import { OrdersTableInProgress } from './tablesComponents/OrdersTableInProgress';
 import { RankClientsTable } from './tablesComponents/RankClientsTable';
-import styles from './styles/RelatoryDasboard.module.css'; // Importa CSS module
+import styles from './styles/RelatoryDasboard.module.css'; 
+import { API_BASE_URL } from '../services/api';
 
 const RelatoryDashboard: React.FC = () => {
   const [activeTable, setActiveTable] = useState<'none' | 'inProgress' | 'rank'>('none');
@@ -45,7 +46,7 @@ const RelatoryDashboard: React.FC = () => {
             }
 
             try {
-              const response = await fetch('http://localhost:8081/services/generate-excel', {
+              const response = await fetch(`${API_BASE_URL}/services/generate-excel`, {
                 method: 'GET',
                 headers: {
                   'Authorization': `Bearer ${authToken}`

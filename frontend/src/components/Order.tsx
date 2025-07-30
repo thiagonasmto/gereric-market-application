@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import styles from './styles/Order.module.css';
+import { API_BASE_URL } from '../services/api';
 
 interface DecodedToken {
     clientid: string;
@@ -61,7 +62,7 @@ const Order: React.FC<OrderProps> = ({ selectedProducts, onQuantityChange }) => 
         };
 
         try {
-            const response = await fetch('http://localhost:8081/orders/', {
+            const response = await fetch(`${API_BASE_URL}/orders/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

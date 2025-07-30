@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/AdminForm.module.css';
+import { API_BASE_URL } from '../../services/api';
 
 const AdminForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -12,7 +13,7 @@ const AdminForm: React.FC = () => {
     e.preventDefault();
     const token = localStorage.getItem("authToken");
     try {
-      const response = await fetch('http://localhost:8081/adms/', {
+      const response = await fetch(`${API_BASE_URL}/adms/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

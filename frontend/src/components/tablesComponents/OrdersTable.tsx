@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Typography, Card, Select, Popover, Button, Divider } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import styles from '../styles/OrdersTable.module.css';
+import { API_BASE_URL } from '../../services/api';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -30,7 +31,7 @@ export const OrdersTable: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:8081/orders/', {
+    fetch(`${API_BASE_URL}/orders/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ export const OrdersTable: React.FC = () => {
 
   const handleStatusChange = async (id: string, newStatus: Order['status']) => {
     try {
-      const response = await fetch(`http://localhost:8081/orders/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/orders/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
