@@ -40,7 +40,7 @@ func UserRoutes(router *gin.Engine) {
 	orderGroup := router.Group("/orders")
 	{
 		orderGroup.POST("/", middlewares.AuthMiddleware(), controllers.CreateOrder)
-		orderGroup.GET("/", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"))
+		orderGroup.GET("/", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.GetOrders)
 		orderGroup.GET("/:id", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.GetOrderById)
 		orderGroup.PUT("/:id", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.UpdateOrder)
 	}
