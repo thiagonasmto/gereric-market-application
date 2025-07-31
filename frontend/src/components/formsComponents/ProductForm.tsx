@@ -30,7 +30,7 @@ const ProductForm: React.FC = () => {
     e.preventDefault();
     const token = localStorage.getItem("authToken");
     try {
-      const response = await fetch(`${API_BASE_URL}1/products/`, {
+      const response = await fetch(`${API_BASE_URL}/products/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
