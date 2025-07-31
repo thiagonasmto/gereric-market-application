@@ -1,6 +1,14 @@
+
 # 🛒 Gestão de Vendas
 
 Aplicação web com backend em Go e frontend em ReactJS + TypeScript, utilizando PostgreSQL como banco de dados.
+
+---
+
+# 🌐 Deploy na Render
+
+Esta aplicação está disponível publicamente via Render!  
+Acesse através do link: [https://gereric-market-application-1.onrender.com](https://gereric-market-application-1.onrender.com)
 
 ---
 
@@ -73,3 +81,8 @@ npm run dev       # Inicia o frontend (geralmente em http://localhost:5173)
 ### 📚 Documentação da API
 
 A documentação completa das rotas e estrutura da API pode ser encontrada no [README do backend](./backend/README.md).
+
+```
+
+Se quiser que eu atualize outro trecho ou crie uma versão traduzida para inglês também, posso ajudar!
+```
