@@ -6,13 +6,20 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/xuri/excelize/v2"
 )
 
 func GenerateExcelReport(c *gin.Context) {
-	reqRank, _ := http.NewRequest("GET", "http://localhost:8081/services/rank-clients", nil)
+	baseURL := os.Getenv("BASE_URL")
+	if baseURL == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "BASE_URL não definida"})
+		return
+	}
+
+	reqRank, _ := http.NewRequest("GET", baseURL+"/services/rank-clients", nil)
 	reqRank.Header.Set("Authorization", c.GetHeader("Authorization"))
 	rankResp, err := http.DefaultClient.Do(reqRank)
 	if err != nil {
@@ -21,7 +28,7 @@ func GenerateExcelReport(c *gin.Context) {
 	}
 	defer rankResp.Body.Close()
 
-	reqOrder, _ := http.NewRequest("GET", "http://localhost:8081/services/ordes-in-progress", nil)
+	reqOrder, _ := http.NewRequest("GET", baseURL+"/services/ordes-in-progress", nil)
 	reqOrder.Header.Set("Authorization", c.GetHeader("Authorization"))
 	orderResp, err := http.DefaultClient.Do(reqOrder)
 	if err != nil {
@@ -30,7 +37,7 @@ func GenerateExcelReport(c *gin.Context) {
 	}
 	defer orderResp.Body.Close()
 
-	reqSummary, _ := http.NewRequest("GET", "http://localhost:8081/services/summary", nil)
+	reqSummary, _ := http.NewRequest("GET", baseURL+"/services/summary", nil)
 	reqSummary.Header.Set("Authorization", c.GetHeader("Authorization"))
 	summaryResp, err := http.DefaultClient.Do(reqSummary)
 	if err != nil {
