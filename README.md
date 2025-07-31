@@ -84,8 +84,3 @@ npm run dev       # Inicia o frontend (geralmente em http://localhost:5173)
 ### 📚 Documentação da API
 
 A documentação completa das rotas e estrutura da API pode ser encontrada no [README do backend](./backend/README.md).
-
-```
-
-Se quiser que eu atualize outro trecho ou crie uma versão traduzida para inglês também, posso ajudar!
-```
