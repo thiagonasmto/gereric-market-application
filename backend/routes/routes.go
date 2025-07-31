@@ -20,8 +20,7 @@ func UserRoutes(router *gin.Engine) {
 
 	admGroup := router.Group("/adms")
 	{
-		admGroup.POST("/", controllers.CreateAdm)
-		// admGroup.POST("/", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.CreateAdm)
+		admGroup.POST("/", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.CreateAdm)
 		admGroup.GET("/", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.GetAdms)
 		admGroup.GET("/:id", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.GetAdm)
 		admGroup.PUT("/:id", middlewares.AuthMiddleware(), middlewares.RequireRoleMiddleware("admin"), controllers.UpdateAdm)
