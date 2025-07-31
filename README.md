@@ -10,6 +10,9 @@ Aplicação web com backend em Go e frontend em ReactJS + TypeScript, utilizando
 Esta aplicação está disponível publicamente via Render!  
 Acesse através do link: [https://gereric-market-application-1.onrender.com](https://gereric-market-application-1.onrender.com)
 
+> ⚠️ **Atenção:** esta é uma instância gratuita da Render.  
+> Quando não está em uso, ela pode entrar em modo de suspensão, o que pode causar atrasos de **50 segundos ou mais** na primeira requisição após um período de inatividade.
+
 ---
 
 ## 🚀 Como rodar o projeto localmente
